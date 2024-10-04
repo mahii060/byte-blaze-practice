@@ -4,8 +4,10 @@ const Home = () => {
     return (
         <div>
             {/* Navbar */}
-            <Navbar />
-            <h1 className="text-5xl text-center">Homepage</h1>
+            <div className="h-[76px]">
+                <Navbar />
+            </div>
+            <h1 className="text-5l text-ceter">Homepage</h1>
         </div>
     );
 };
