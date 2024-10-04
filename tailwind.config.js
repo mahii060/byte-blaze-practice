@@ -17,14 +17,13 @@ export default {
       "light",
       "dark",
       "synthwave",
-      "black",
       "dim",
       {
         mytheme: {
 
-          "primary": "#BA55D3",
+          "primary": "#006eff",
 
-          "secondary": "#2f7200",
+          "secondary": "#db2777",
 
           "accent": "#0000ff",
 

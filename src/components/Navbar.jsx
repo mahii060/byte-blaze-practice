@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+    const [theme, setTheme] = useState('mytheme');
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme)
+        const localTheme = localStorage.getItem('theme')
+        document.querySelector('html').setAttribute('data-theme', localTheme)
+    }, [theme]) //<--- This array contains 'theme' as a dependency;
+
+    const handleTheme = (e) => {
+        if (e.target.checked) {
+            setTheme('dim')
+        }
+        else {
+            setTheme('mytheme')
+        }
+    }
+
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -21,30 +39,39 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a>Home</a></li>
-                        <li>
+                        <li className="font-bold text-xl"><a>Home</a></li>
+                        <li className="font-bold text-xl">
                             <a>Blogs</a>
                         </li>
-                        <li><a>Bookmarks</a></li>
+                        <li className="font-bold text-xl"><a>Bookmarks</a></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Byte Blaze</a>
+                <a className="btn btn-ghost text-2xl text-secondary font-bold tracking-wide gap-0">
+                    <span>Byte</span>
+                    <span className="text-primary">Blaze</span></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
-                    <li>
-                        <summary>Blogs</summary>
+                    <li className="font-bold text-xl"><a>Home</a></li>
+                    <li className="font-bold text-xl text-primary">
+                        <a>Blogs</a>
                     </li>
-                    <li><a>Bookmarks</a></li>
+                    <li className="font-bold text-xl"><a>Bookmarks</a></li>
                 </ul>
             </div>
+
+            {/* Theme controlling */}
             <div className="navbar-end">
-                <label className="flex cursor-pointer gap-2">
+                <label className="grid cursor-pointer place-items-center">
+                    <input
+                        onChange={handleTheme}
+                        type="checkbox"
+                        className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1" />
                     <svg
+                        className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        width="14"
+                        height="14"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -55,11 +82,11 @@ const Navbar = () => {
                         <path
                             d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                     </svg>
-                    <input type="checkbox" value="dim" className="toggle theme-controller" />
                     <svg
+                        className="stroke-base-100 fill-base-100 col-start-2 row-start-1"
                         xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
+                        width="14"
+                        height="14"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
