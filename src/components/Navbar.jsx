@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [theme, setTheme] = useState('mytheme');
@@ -21,6 +22,21 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
             <div className="navbar-start">
+                <a className="btn btn-ghost text-2xl text-secondary font-bold tracking-wide gap-0">
+                    <span>Byte</span>
+                    <span className="text-primary">Blaze</span></a>
+            </div>
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal gap-4 px-1">
+                    <NavLink to='/' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Home</NavLink>
+
+                    <NavLink to='/blogs' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Blogs</NavLink>
+
+                    <NavLink to='/bookmarks' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Bookmarks</NavLink>
+                </ul>
+            </div>
+            {/* Menu Drop down for small devices */}
+            <div className="navbar-end">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
@@ -38,30 +54,15 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li className="font-bold text-xl"><a>Home</a></li>
-                        <li className="font-bold text-xl">
-                            <a>Blogs</a>
-                        </li>
-                        <li className="font-bold text-xl"><a>Bookmarks</a></li>
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg">
+                        <NavLink to='/' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Home</NavLink>
+
+                        <NavLink to='/blogs' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Blogs</NavLink>
+
+                        <NavLink to='/bookmarks' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Bookmarks</NavLink>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-2xl text-secondary font-bold tracking-wide gap-0">
-                    <span>Byte</span>
-                    <span className="text-primary">Blaze</span></a>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li className="font-bold text-xl"><a>Home</a></li>
-                    <li className="font-bold text-xl text-primary">
-                        <a>Blogs</a>
-                    </li>
-                    <li className="font-bold text-xl"><a>Bookmarks</a></li>
-                </ul>
-            </div>
-
-            {/* Theme controlling */}
-            <div className="navbar-end">
+                {/* Theme controlling */}
                 <label className="grid cursor-pointer place-items-center">
                     <input
                         onChange={handleTheme}
@@ -97,7 +98,7 @@ const Navbar = () => {
                     </svg>
                 </label>
             </div>
-        </div>
+        </div >
     );
 };
 
