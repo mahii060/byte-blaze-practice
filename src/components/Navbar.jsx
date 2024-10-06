@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const [theme, setTheme] = useState('mytheme');
@@ -20,19 +20,20 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
+        <nav className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
             <div className="navbar-start">
-                <a className="btn btn-ghost text-2xl text-secondary font-bold tracking-wide gap-0">
+                <Link to='/' className="btn btn-ghost text-2xl text-secondary font-bold tracking-wide gap-0">
                     <span>Byte</span>
-                    <span className="text-primary">Blaze</span></a>
+                    <span className="text-primary">Blaze</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal gap-4 px-1">
-                    <NavLink to='/' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Home</NavLink>
+                    <NavLink to='/' className={({ isActive }) => isActive ? 'text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Home</NavLink>
 
-                    <NavLink to='/blogs' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Blogs</NavLink>
+                    <NavLink to='/blogs' className={({ isActive }) => isActive ?
+                        'text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Blogs</NavLink>
 
-                    <NavLink to='/bookmarks' className={({ isActive }) => isActive ? ' text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Bookmarks</NavLink>
+                    <NavLink to='/bookmarks' className={({ isActive }) => isActive ? 'text-secondary font-bold text-xl underline' : 'font-bold text-xl'}>Bookmarks</NavLink>
                 </ul>
             </div>
             {/* Menu Drop down for small devices */}
@@ -98,7 +99,7 @@ const Navbar = () => {
                     </svg>
                 </label>
             </div>
-        </div >
+        </nav>
     );
 };
 

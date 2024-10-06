@@ -1,9 +1,9 @@
+import Hero from "../components/Hero";
 
 const Home = () => {
     return (
-        <div>
-            {/* Navbar */}
-            <h1 className="text-5l text-ceter">Homepage</h1>
+        <div className="flex flex-col justify-center items-center min-h-[calc(100vh-116px)]">
+            <Hero />
         </div>
     );
 };

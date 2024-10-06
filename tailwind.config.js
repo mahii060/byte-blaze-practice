@@ -7,11 +7,25 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        animatedgradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      },
+      backgroundSize: {
+        '300%': '300%',
+      },
+      animation: {
+        gradient: 'animatedgradient 2s ease infinite alternate',
+      },
+    },
   },
-  plugins: [
-    daisyui,
-  ],
+
+  plugins: [daisyui],
+
   daisyui: {
     themes: [
       "light",
@@ -21,7 +35,7 @@ export default {
       {
         mytheme: {
 
-          "primary": "#006eff",
+          "primary": "#1d4ed8",
 
           "secondary": "#db2777",
 
@@ -41,7 +55,6 @@ export default {
         },
       },
     ],
-
   },
 }
 
