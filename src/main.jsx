@@ -7,6 +7,7 @@ import Blogs from './pages/Blogs.jsx'
 import Bookmarks from './pages/Bookmarks.jsx'
 import MainLayout from './layout/MainLayout.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
+import Blog from './pages/Blog.jsx'
 
 
 const router = createBrowserRouter([
@@ -16,19 +17,23 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
+        path: '/',
         element: <Home />
       },
       {
         path: '/blogs',
         element: <Blogs />,
-        loader: () => fetch('https://dev.to/api/articles?per_page=50&top=1')
+        loader: () => fetch('https://dev.to/api/articles?per_page=20&top=1')
+      },
+      {
+        path: '/blog/:id',
+        element: <Blog />,
+        loader: ({ params }) => fetch(`https://dev.to/api/articles/${params.id}`)
       },
       {
         path: '/bookmarks',
         element: <Bookmarks />
       },
-
     ]
   }
 ])
