@@ -6,12 +6,14 @@ import Home from './pages/Home.jsx'
 import Blogs from './pages/Blogs.jsx'
 import Bookmarks from './pages/Bookmarks.jsx'
 import MainLayout from './layout/MainLayout.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -19,7 +21,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/blogs',
-        element: <Blogs />
+        element: <Blogs />,
+        loader: () => fetch('https://dev.to/api/articles?per_page=50&top=1')
       },
       {
         path: '/bookmarks',
