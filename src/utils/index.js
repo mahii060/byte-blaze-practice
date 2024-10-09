@@ -14,7 +14,7 @@ export const saveBlog = blog => {
     let blogs = getBlogs();
     const isExist = blogs.find(b => b.id === blog.id)
     if (isExist) {
-        return toast('Already Bookmarked')
+        return toast.error('Already Bookmarked')
     }
     blogs.push(blog)
     localStorage.setItem('blogs', JSON.stringify(blogs))
