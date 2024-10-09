@@ -4,9 +4,11 @@ import { MdBookmarkAdd } from "react-icons/md";
 
 const Blog = () => {
     const [tabIndex, setTabIndex] = useState(0);
-
     const blog = useLoaderData();
     const { published_at, title, reading_time_minutes, public_reactions_count, comments_count } = blog;
+    const handleBookmark = blog => {
+        console.log(blog);
+    }
     return (
         <div className="max-w-3xl px-6 py-16 mx-auto space-y-12">
             <article className="space-y-8 ">
@@ -35,7 +37,7 @@ const Blog = () => {
                         </svg>
                         <span>Author</span>
                     </Link>
-                    <MdBookmarkAdd onClick={() => console.log('clicked')} size={40} className="rounded-full text-primary bg-primary hover:bg-opacity-50 cursor-pointer bg-opacity-25 p-2" />
+                    <MdBookmarkAdd onClick={() => handleBookmark(blog)} size={40} className="rounded-full text-secondary bg-primary hover:bg-opacity-30 cursor-pointer bg-opacity-20 p-2 hover:scale-105 overflow-hidden" />
                 </div>
                 <Outlet />
             </article>
