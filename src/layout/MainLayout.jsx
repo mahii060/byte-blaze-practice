@@ -1,8 +1,12 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Loader from "../components/Loader";
 
 const MainLayout = () => {
+    const navigation = useNavigation();
+
+    if (navigation.state === 'loading') return <Loader />
     return (
         <>
             <header className="h-16">
