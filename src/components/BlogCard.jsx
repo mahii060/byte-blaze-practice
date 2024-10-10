@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { MdDeleteForever } from "react-icons/md";
-import { deleteBlog } from '../utils';
 
 const BlogCard = ({ blog, deletable, handleDelete }) => {
     const { cover_image, published_at, title, description, id } = blog;

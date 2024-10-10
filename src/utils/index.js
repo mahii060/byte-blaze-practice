@@ -24,6 +24,6 @@ export const saveBlog = blog => {
 export const deleteBlog = id => {
     let blogs = getBlogs();
     const remaining = blogs.filter(blog => blog.id !== id);
-    localStorage.setItem('blogs', JSON.stringify(remaining))
     toast.error('Blog removed from bookmark list')
+    localStorage.setItem('blogs', JSON.stringify(remaining))
 }
